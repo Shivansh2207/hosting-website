@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Maulik Forwarders</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #f57c00;
+            --secondary-color: #2c3e50;
+            --bg-light: #f9f9f9;
+            --text-dark: #333;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 3px;
+        }
+
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                        url('images/import1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            letter-spacing: -1px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            animation: fadeIn 1s ease;
+        }
+
+
+        .doc-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .doc-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .doc-list {
+            list-style: none;
+        }
+
+        .doc-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .doc-list li::before {
+            content: '📄';
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .help-note {
+            margin-top: 1rem;
+            color: #777;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .doc-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="Maulik Forwarders Home">
+                <img src="images/logo.jpg" alt="Maulik Forwarders Logo">
+                Maulik Forwarders
+            </a>
+            <div class="nav-links" role="menubar">
+                <a href="index.html" role="menuitem">Home</a>
+                <a href="services.html" role="menuitem">Services</a>
+                <a href="documents.html" class="active" role="menuitem" aria-current="page">Documents</a>
+                <a href="contact.html" role="menuitem">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Export & Import Documentation</h1>
+            <p>Complete guide to required documentation for international trade. Access all necessary forms and requirements for seamless customs clearance.</p>
+        </div>
+    </section>
+
+    <div class="doc-container">
+        <!-- Export Documents Card -->
+        <div class="doc-card">
+            <div class="card-header">
+                <i class="fas fa-file-export"></i>
+                Export Documents
+            </div>
+            <div class="card-content">
+                <ul class="doc-list">
+                    <li>Basic Requirements:
+                        <ul>
+                            <li>Invoices (9 Copies)</li>
+                            <li>Packing List (9 Copies)</li>
+                            <li>Letter of Credit/Order/Contract</li>
+                        </ul>
+                    </li>
+                    <li>Mandatory Documents:
+                        <ul>
+                            <li>Export Declarations</li>
+                            <li>GR Form (duplicate)</li>
+                            <li>Income Tax Number</li>
+                            <li>Importer/Exporter Code</li>
+                        </ul>
+                    </li>
+                    <li>Additional Documents:
+                        <ul>
+                            <li>Forwarding Instructions</li>
+                            <li>E.I.A. Certificate</li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="view-details-btn">View Detailed Requirements</button>
+                <div class="detailed-requirements">
+                    <h4>Additional Export Documentation:</h4>
+                    <ul class="detailed-list">
+                        <li>Certificate of Origin</li>
+                        <li>Quality Control Certificates</li>
+                        <li>Pre-shipment Inspection Certificate</li>
+                        <li>GST Related Documents</li>
+                        <li>Bank Realization Certificate</li>
+                    </ul>
+                    
+                    <h4>Special Export Requirements:</h4>
+                    <ul class="detailed-list">
+                        <li>Export Promotion Copy</li>
+                        <li>Shipping Bill (5 copies)</li>
+                        <li>ARE-1 Form (if applicable)</li>
+                        <li>Insurance Certificate</li>
+                        <li>Letter of Credit Compliance Documents</li>
+                    </ul>
+                </div>
+                <p class="help-note">For assistance with export documentation, please contact our office</p>
+            </div>
+        </div>
+
+        <!-- DEEC/DEPB Documents Card -->
+        <div class="doc-card">
+            <div class="card-header">
+                <i class="fas fa-file-contract"></i>
+                DEEC/DEPB Documents
+            </div>
+            <div class="card-content">
+                <ul class="doc-list">
+                    <li>Primary Documents:
+                        <ul>
+                            <li>Pro forma Invoice (2 copies)</li>
+                            <li>DEEC/DEPB Book</li>
+                            <li>Application with Receipt</li>
+                        </ul>
+                    </li>
+                    <li>Supporting Documents:
+                        <ul>
+                            <li>Declarations</li>
+                            <li>Drawback Claims</li>
+                            <li>Bank Details</li>
+                            <li>Manufacturer Details</li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="view-details-btn">View Detailed Requirements</button>
+                <div class="detailed-requirements">
+                    <h4>DEEC Specific Requirements:</h4>
+                    <ul class="detailed-list">
+                        <li>Input-Output Norms</li>
+                        <li>Export Obligation Documents</li>
+                        <li>Previous License Details</li>
+                        <li>Raw Material Import Details</li>
+                    </ul>
+                    
+                    <h4>DEPB Specific Requirements:</h4>
+                    <ul class="detailed-list">
+                        <li>Value Addition Details</li>
+                        <li>DEPB Rate Sheet</li>
+                        <li>Previous DEPB Scrips</li>
+                        <li>Port of Registration Details</li>
+                    </ul>
+                </div>
+                <p class="help-note">Need help with DEEC/DEPB? Our experts are here to guide you</p>
+            </div>
+        </div>
+
+        <!-- Import Documents Card -->
+        <div class="doc-card">
+            <div class="card-header">
+                <i class="fas fa-file-import"></i>
+                Import Documents
+            </div>
+            <div class="card-content">
+                <ul class="doc-list">
+                    <li>Import/Export Code (DGFT)</li>
+                    <li>Permanent Income Tax Account Number</li>
+                    <li>Commercial Documents:
+                        <ul>
+                            <li>Signed Invoice & Packing List</li>
+                            <li>Bill of Lading/Airway Bill</li>
+                            <li>Insurance Policy/Memo</li>
+                        </ul>
+                    </li>
+                    <li>Import License/OGL Declaration</li>
+                    <li>GATT & Importer's Declarations</li>
+                    <li>Certificate of Origin</li>
+                    <li>Bank Documents:
+                        <ul>
+                            <li>Letter of Credit/Bank Draft</li>
+                            <li>Bank Endorsed Documents</li>
+                            <li>Freight Certificate (if applicable)</li>
+                        </ul>
+                    </li>
+                    <li>Special Requirements:
+                        <ul>
+                            <li>DEEC/DEPB Documents</li>
+                            <li>N-Form and Undertaking (Mumbai)</li>
+                            <li>Duty Bonds (for Warehousing)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="view-details-btn">View Detailed Requirements</button>
+                <div class="detailed-requirements">
+                    <h4>Additional Documentation Details:</h4>
+                    <ul class="detailed-list">
+                        <li>Literature/Certificate of Analysis/Catalogue</li>
+                        <li>No Commission Declaration</li>
+                        <li>Packing Material Declaration (PN.99/90)</li>
+                        <li>Concessional Duty Certificates</li>
+                        <li>Ad-hoc Exemption Certificates</li>
+                    </ul>
+                    
+                    <h4>For Bonded Warehouse (Outside Mumbai):</h4>
+                    <ul class="detailed-list">
+                        <li>Double-Duty Bond</li>
+                        <li>Transit Bond</li>
+                        <li>Space Availability Certificate</li>
+                        <li>NOC from Customs/Central Excise</li>
+                        <li>Transit Insurance Policy</li>
+                    </ul>
+                </div>
+                <p class="help-note">For comprehensive import documentation support, contact our team</p>
+            </div>
+        </div>
+
+        <style>
+            .doc-list ul {
+                margin-left: 1.5rem;
+                margin-top: 0.5rem;
+            }
+
+            .doc-list ul li {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .doc-list ul li::before {
+                content: '•';
+                font-size: 1.2rem;
+            }
+
+            .view-details-btn {
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                margin: 1rem 0;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+            .view-details-btn:hover {
+                background: #e65100;
+            }
+
+            .detailed-requirements {
+                display: none;
+                margin-top: 1rem;
+                padding: 1rem;
+                background: #f5f5f5;
+                border-radius: 5px;
+            }
+
+            .detailed-requirements h4 {
+                color: var(--primary-color);
+                margin-bottom: 0.5rem;
+            }
+
+            .detailed-list {
+                list-style: none;
+                margin-bottom: 1rem;
+            }
+
+            .detailed-list li {
+                margin-bottom: 0.5rem;
+                padding-left: 1.2rem;
+                position: relative;
+                font-size: 0.9rem;
+            }
+
+            .detailed-list li::before {
+                content: '→';
+                position: absolute;
+                left: 0;
+            }
+        </style>
+
+        <script>
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const details = this.nextElementSibling;
+                    const isHidden = details.style.display === 'none' || !details.style.display;
+                    details.style.display = isHidden ? 'block' : 'none';
+                    this.textContent = isHidden ? 'Hide Details' : 'View Detailed Requirements';
+                });
+            });
+        </script>
+
+        <!-- Mumbai-Specific Requirements Card -->
+        <div class="doc-card">
+            <div class="card-header">
+                <i class="fas fa-building"></i>
+                Mumbai Export Requirements
+            </div>
+            <div class="card-content">
+                <ul class="doc-list">
+                    <li>EDI Number</li>
+                    <li>N-Form with Undertaking</li>
+                    <li>Phytosanitary Certificates</li>
+                    <li>SGS Certification</li>
+                    <li>Fumigation Certificates</li>
+                    <li>Palletisation Details</li>
+                </ul>
+                <p class="help-note">Questions about Mumbai-specific requirements? Contact our local office</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 9930098929</p>
+                            </div>
+            <div class="footer-section">
+                <h3>Email Us</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:himanshu@maulikforwarders.com">himanshu@maulikforwarders.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:maulik@maulikforwarders.com">maulik@maulikforwarders.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Visit Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 382/384, Narsi Natha Street,</p>
+                <p>Masjid Bunder (W), Mumbai-400 009.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

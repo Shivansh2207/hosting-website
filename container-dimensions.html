@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Dimensions - Maulik Forwarders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #f57c00;
+            --secondary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 60px;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                        url('images/container.jpeg');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 0 100px;
+            text-align: center;
+            color: white;
+        }
+
+        .container-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container-hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .container-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .container-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .container-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .container-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .container-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .container-card:hover .container-image img {
+            transform: scale(1.1);
+        }
+
+        .container-details {
+            padding: 25px;
+        }
+
+        .container-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .dimensions-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .dimensions-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        .dimension-label {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .dimension-value {
+            color: var(--text-light);
+        }
+
+        .container-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .features-list li {
+            color: var(--text-light);
+            padding: 5px 0;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .features-list li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), #1a252f);
+            color: white;
+            padding: 80px 0 40px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .container-hero h1 {
+                font-size: 2.5rem;
+            }
+            .container-hero p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .container-card {
+                margin: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Maulik Forwarders Logo">
+                <div class="logo-text">
+                    <span class="company-name">Maulik Forwarders</span>
+                    <span class="tagline">Global Logistics Solutions</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="container-dimensions.html">Containers</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container-hero">
+        <h1>Container Dimensions</h1>
+        <p>Comprehensive guide to shipping container specifications and measurements</p>
+    </section>
+
+    <div class="container-content">
+        <div class="container-types">
+            <!-- 20' Standard Container -->
+            <div class="container-card">
+                <div class="container-image">
+                    <img src="images/c1.png" alt="20' Standard Container">
+                </div>
+                <div class="container-details">
+                    <h2 class="container-title">20' STANDARD</h2>
+                    <ul class="dimensions-list">
+                        <li>
+                            <span class="dimension-label">Inside Length</span>
+                            <span class="dimension-value">5.895 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Height</span>
+                            <span class="dimension-value">2.392 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Width</span>
+                            <span class="dimension-value">2.340 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Height</span>
+                            <span class="dimension-value">2.292 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Capacity</span>
+                            <span class="dimension-value">33 m³</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Tare Weight</span>
+                            <span class="dimension-value">2230 Kgs</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Max Cargo Weight</span>
+                            <span class="dimension-value">28230 Kgs</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Add similar container-card divs for all other container types -->
+            <!-- 40' Standard -->
+            <div class="container-card">
+                <div class="container-image">
+                    <img src="images/c2.png" alt="40' Standard Container">
+                </div>
+                <div class="container-details">
+                    <h2 class="container-title">40' STANDARD</h2>
+                    <ul class="dimensions-list">
+                        <li>
+                            <span class="dimension-label">Inside Length</span>
+                            <span class="dimension-value">12.029 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Width</span>
+                            <span class="dimension-value">2.350 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Height</span>
+                            <span class="dimension-value">2.392 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Width</span>
+                            <span class="dimension-value">2.340 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Height</span>
+                            <span class="dimension-value">2.292 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Capacity</span>
+                            <span class="dimension-value">67 m³</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Tare Weight</span>
+                            <span class="dimension-value">3780 Kgs</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Max Cargo Weight</span>
+                            <span class="dimension-value">26700 Kgs</span>
+                        </li>
+                    </ul>
+                    <p class="container-description">
+                        Standard containers are also known as general purpose containers. They are closed containers, i.e. they are closed on all sides.
+                    </p>
+                    <ul class="features-list">
+                        <li>Standard containers with doors at one or both end(s)</li>
+                        <li>Standard containers with doors at one or both end(s) and doors over the entire length</li>
+                        <li>Standard containers with doors at one or both end(s) and doors on one or both sides</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 40' High Cube -->
+            <div class="container-card">
+                <div class="container-image">
+                    <img src="images/c3.png" alt="40' High Cube Container">
+                </div>
+                <div class="container-details">
+                    <h2 class="container-title">40' HIGH CUBE</h2>
+                    <ul class="dimensions-list">
+                        <li>
+                            <span class="dimension-label">Inside Length</span>
+                            <span class="dimension-value">12.024 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Width</span>
+                            <span class="dimension-value">2.350 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Height</span>
+                            <span class="dimension-value">2.697 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Width</span>
+                            <span class="dimension-value">2.340 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Height</span>
+                            <span class="dimension-value">2.597 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Capacity</span>
+                            <span class="dimension-value">76 m³</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Tare Weight</span>
+                            <span class="dimension-value">4020 Kgs</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Max Cargo Weight</span>
+                            <span class="dimension-value">26460 Kgs</span>
+                        </li>
+                    </ul>
+                    <p class="container-description">
+                        The walls are made of corrugated steel with a wooden floor. Features removable bows and tarpaulin roof with swivel-out door header.
+                    </p>
+                    <ul class="features-list">
+                        <li>Easy loading from top when roof is open</li>
+                        <li>Lashing rings with 1,000 kg capacity</li>
+                        <li>Suitable for oversized cargo</li>
+                        <li>Enhanced height for additional cargo space</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Continue with all other container types -->
+            <!-- 20' Open Top -->
+            <div class="container-card">
+                <div class="container-image">
+                    <img src="images/c4.png" alt="20' Open Top Container">
+                </div>
+                <div class="container-details">
+                    <h2 class="container-title">20' OPEN TOP</h2>
+                    <ul class="dimensions-list">
+                        <li>
+                            <span class="dimension-label">Inside Length</span>
+                            <span class="dimension-value">5.888 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Height</span>
+                            <span class="dimension-value">2.345 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Width</span>
+                            <span class="dimension-value">2.315 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Height</span>
+                            <span class="dimension-value">2.184 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Capacity</span>
+                            <span class="dimension-value">32 m³</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Tare Weight</span>
+                            <span class="dimension-value">2250 Kgs</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Max Cargo Weight</span>
+                            <span class="dimension-value">30480 Kgs</span>
+                        </li>
+                    </ul>
+                    <p class="container-description">
+                        The walls of open-top containers are made of corrugated steel with a wooden floor. Features removable bows and tarpaulin roof with swivel-out door header.
+                    </p>
+                    <ul class="features-list">
+                        <li>Easy loading from top or through doors</li>
+                        <li>Removable roof bows for stability</li>
+                        <li>Lashing rings with 1,000 kg capacity</li>
+                        <li>Suitable for crane or grab loading</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 40' Open Top -->
+                        <div class="container-card">
+                            <div class="container-image">
+                                <img src="images/c5.png" alt="40' Open Top Container">
+                            </div>
+                            <div class="container-details">
+                                <h2 class="container-title">40' OPEN TOP</h2>
+                                <ul class="dimensions-list">
+                                    <li>
+                                        <span class="dimension-label">Inside Length</span>
+                                        <span class="dimension-value">12.029 m</span>
+                                    </li>
+                                    <li>
+                                        <span class="dimension-label">Inside Width</span>
+                                        <span class="dimension-value">2.342 m</span>
+                                    </li>
+                                    <li>
+                                        <span class="dimension-label">Inside Height</span>
+                                        <span class="dimension-value">2.326 m</span>
+                                    </li>
+                                    <li>
+                                        <span class="dimension-label">Door Width</span>
+                                        <span class="dimension-value">2.341 m</span>
+                                    </li>
+                                    <li>
+                                        <span class="dimension-label">Door Height</span>
+                                        <span class="dimension-value">2.274 m</span>
+                                    </li>
+                                    <li>
+                                        <span class="dimension-label">Capacity</span>
+                                        <span class="dimension-value">55 m³</span>
+                                    </li>
+                                    <li>
+                                        <span class="dimension-label">Tare Weight</span>
+                                        <span class="dimension-value">3810 Kgs</span>
+                                    </li>
+                                    <li>
+                                        <span class="dimension-label">Max Cargo Weight</span>
+                                        <span class="dimension-value">26670 Kgs</span>
+                                    </li>
+                                </ul>
+                                <p class="container-description">
+                                    The walls of open-top containers are made of corrugated steel with a wooden floor. Features removable bows and tarpaulin roof with swivel-out door header.
+                                </p>
+                                <ul class="features-list">
+                                    <li>Easy loading from top or through doors</li>
+                                    <li>Removable roof bows for stability</li>
+                                    <li>Lashing rings with 1,000 kg capacity</li>
+                                    <li>Suitable for crane or grab loading</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 20' Flatrack -->
+    <div class="container-card">
+        <div class="container-image">
+            <img src="images/c6.png" alt="20' Flatrack Container">
+        </div>
+        <div class="container-details">
+            <h2 class="container-title">20' FLATRACK</h2>
+            <ul class="dimensions-list">
+                <li>
+                    <span class="dimension-label">Inside Length</span>
+                    <span class="dimension-value">5.698 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Inside Width</span>
+                    <span class="dimension-value">2.230 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Inside Height</span>
+                    <span class="dimension-value">2.255 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Door Width</span>
+                    <span class="dimension-value">0.000 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Door Height</span>
+                    <span class="dimension-value">0.000 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Capacity</span>
+                    <span class="dimension-value">0 m³</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Tare Weight</span>
+                    <span class="dimension-value">2530 Kgs</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Max Cargo Weight</span>
+                    <span class="dimension-value">21,500 Kgs</span>
+                </li>
+            </ul>
+            <p class="container-description">
+                Flatracks consist of a floor structure with a high loading capacity composed of a steel frame and a softwood floor and two end walls, which may either be fixed or collapsible.
+            </p>
+            <ul class="features-list">
+                <li>High loading capacity steel frame construction</li>
+                <li>Lashing rings with up to 2000 kg capacity</li>
+                <li>Available with forklift pockets</li>
+                <li>Collapsible end walls for versatile loading</li>
+                <li>Suitable for stackable cargo arrangements</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container-card">
+        <div class="container-image">
+            <img src="images/c7.png" alt="40' Flatrack Container">
+        </div>
+        <div class="container-details">
+            <h2 class="container-title">40' FLATRACK</h2>
+            <ul class="dimensions-list">
+                <li>
+                    <span class="dimension-label">Inside Length</span>
+                    <span class="dimension-value">11.832 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Inside Width</span>
+                    <span class="dimension-value">2.223 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Inside Height</span>
+                    <span class="dimension-value">1.981 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Door Width</span>
+                    <span class="dimension-value">3.000 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Door Height</span>
+                    <span class="dimension-value">0.000 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Capacity</span>
+                    <span class="dimension-value">0 m³</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Tare Weight</span>
+                    <span class="dimension-value">4,200 Kgs</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Max Cargo Weight</span>
+                    <span class="dimension-value">43,203 Kgs</span>
+                </li>
+            </ul>
+            <p class="container-description">
+                Flatracks consist of a floor structure with a high loading capacity composed of a steel frame and a softwood floor, and two end walls, which may either be fixed or collapsible. The end walls are stable enough to allow cargo securing means to be attached and several flatracks to be stacked on top of one another. Flatracks are available in 20' and 40' sizes.
+            </p>
+            <ul class="features-list">
+                <li>A number of lashing rings in the side rails, corner posts, and floor to secure cargo</li>
+                <li>Lashing rings support up to 2000 kg (20') or 4000 kg (40')</li>
+                <li>Some 20' flatracks include forklift pockets</li>
+                <li>40' flatracks have gooseneck tunnels at each end</li>
+                <li>Optional lashing winches with 2 metric ton lashing belts</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="container-card">
+        <div class="container-image">
+            <img src="images/c8.jpg" alt="20' Flatrack Collapsible Container">
+        </div>
+        <div class="container-details">
+            <h2 class="container-title">20' FLATRACK COLLAPSIBLE</h2>
+            <ul class="dimensions-list">
+                <li>
+                    <span class="dimension-label">Inside Length</span>
+                    <span class="dimension-value">5.675 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Inside Width</span>
+                    <span class="dimension-value">2.213 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Inside Height</span>
+                    <span class="dimension-value">2.270 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Door Width</span>
+                    <span class="dimension-value">0.000 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Door Height</span>
+                    <span class="dimension-value">0.000 m</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Capacity</span>
+                    <span class="dimension-value">0 m³</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Tare Weight</span>
+                    <span class="dimension-value">2,600 Kgs</span>
+                </li>
+                <li>
+                    <span class="dimension-label">Max Cargo Weight</span>
+                    <span class="dimension-value">30,150 Kgs</span>
+                </li>
+            </ul>
+            <p class="container-description">
+                Flatracks consist of a floor structure with a high loading capacity composed of a steel frame and a softwood floor and two end walls, which may either be fixed or collapsible. The end walls are stable enough to allow cargo securing means to be attached and several flatracks to be stacked on top of one another. Flatracks are available in 20' and 40' sizes.
+            </p>
+            <ul class="features-list">
+                <li>A number of lashing rings in the side rails, corner posts, and floor to secure cargo</li>
+                <li>Lashing rings support up to 2000 kg (20') or 4000 kg (40')</li>
+                <li>Some 20' flatracks include forklift pockets</li>
+                <li>40' flatracks have gooseneck tunnels at each end</li>
+                <li>Optional lashing winches with 2 metric ton lashing belts</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <!-- 40' Flatrack Collapsible -->
+            <div class="container-card">
+                <div class="container-image">
+                    <img src="images/c9.jpg" alt="40' Flatrack Collapsible Container">
+                </div>
+                <div class="container-details">
+                    <h2 class="container-title">40' FLATRACK COLLAPSIBLE</h2>
+                    <ul class="dimensions-list">
+                        <li>
+                            <span class="dimension-label">Inside Length</span>
+                            <span class="dimension-value">11.660 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Width</span>
+                            <span class="dimension-value">2.200 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Height</span>
+                            <span class="dimension-value">2.245 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Width</span>
+                            <span class="dimension-value">0.000 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Height</span>
+                            <span class="dimension-value">0.000 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Capacity</span>
+                            <span class="dimension-value">0 m³</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Tare Weight</span>
+                            <span class="dimension-value">5,700 Kgs</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Max Cargo Weight</span>
+                            <span class="dimension-value">39,300 Kgs</span>
+                        </li>
+                    </ul>
+                    <p class="container-description">
+                        Flatracks consist of a floor structure with a high loading capacity composed of a steel frame and a softwood floor and two collapsible end walls.
+                    </p>
+                    <ul class="features-list">
+                        <li>Lashing rings with up to 4000 kg capacity</li>
+                        <li>Gooseneck tunnels at each end</li>
+                        <li>Optional lashing winches with 2 metric ton capacity</li>
+                        <li>Collapsible end walls for space-saving storage</li>
+                        <li>Suitable for stackable cargo arrangements</li>
+                    </ul>
+                </div>
+            </div>
+               <!-- 20' Platform -->
+               <div class="container-card">
+                <div class="container-image">
+                    <img src="images/c10.png" alt="20' Platform Container">
+                </div>
+                <div class="container-details">
+                    <h2 class="container-title">20' PLATFORM</h2>
+                    <ul class="dimensions-list">
+                        <li>
+                            <span class="dimension-label">Inside Length</span>
+                            <span class="dimension-value">6.058 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Width</span>
+                            <span class="dimension-value">2.438 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Inside Height</span>
+                            <span class="dimension-value">0.370 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Width</span>
+                            <span class="dimension-value">0.000 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Door Height</span>
+                            <span class="dimension-value">0.000 m</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Capacity</span>
+                            <span class="dimension-value">0 m³</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Tare Weight</span>
+                            <span class="dimension-value">2,520 Kgs</span>
+                        </li>
+                        <li>
+                            <span class="dimension-label">Max Cargo Weight</span>
+                            <span class="dimension-value">27,960 Kgs</span>
+                        </li>
+                    </ul>
+                    <p class="container-description">
+                        Platforms consist solely of a floor structure with extremely high loading capacity; they have no side or end walls. This high loading capacity makes it possible to concentrate heavy weights on small areas.
+                    </p>
+                    <ul class="features-list">
+                        <li>Steel frame with wooden floor structure</li>
+                        <li>Lashing rings with up to 3,000 kg capacity</li>
+                        <li>No side or end walls for maximum accessibility</li>
+                        <li>Suitable for heavy concentrated loads</li>
+                        <li>High loading capacity floor structure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 40' Platform -->
+                    <div class="container-card">
+                        <div class="container-image">
+                            <img src="images/c11.png" alt="40' Platform Container">
+                        </div>
+                        <div class="container-details">
+                            <h2 class="container-title">40' PLATFORM</h2>
+                            <ul class="dimensions-list">
+                                <li>
+                                    <span class="dimension-label">Inside Length</span>
+                                    <span class="dimension-value">12.192 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Inside Width</span>
+                                    <span class="dimension-value">2.245 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Inside Height</span>
+                                    <span class="dimension-value">0.648 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Door Width</span>
+                                    <span class="dimension-value">0.000 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Door Height</span>
+                                    <span class="dimension-value">0.000 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Capacity</span>
+                                    <span class="dimension-value">0 m³</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Tare Weight</span>
+                                    <span class="dimension-value">5,700 Kgs</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Max Cargo Weight</span>
+                                    <span class="dimension-value">39,300 Kgs</span>
+                                </li>
+                            </ul>
+                            <p class="container-description">
+                                Platforms consist solely of a floor structure with extremely high loading capacity; they have no side or end walls. This high loading capacity makes it possible to concentrate heavy weights on small areas.
+                            </p>
+                            <ul class="features-list">
+                                <li>Steel frame with wooden floor structure</li>
+                                <li>Lashing rings with up to 3,000 kg capacity</li>
+                                <li>Gooseneck tunnels at each end</li>
+                                <li>No side or end walls for maximum accessibility</li>
+                                <li>High loading capacity floor structure</li>
+                            </ul>
+                        </div>
+                    </div>
+
+            <!-- 20' Refrigerated -->
+                    <div class="container-card">
+                        <div class="container-image">
+                            <img src="images/c12.png" alt="20' Refrigerated Container">
+                        </div>
+                        <div class="container-details">
+                            <h2 class="container-title">20' REFRIGERATED</h2>
+                            <ul class="dimensions-list">
+                                <li>
+                                    <span class="dimension-label">Inside Length</span>
+                                    <span class="dimension-value">5.724 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Inside Width</span>
+                                    <span class="dimension-value">2.286 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Inside Height</span>
+                                    <span class="dimension-value">2.014 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Door Width</span>
+                                    <span class="dimension-value">2.286 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Door Height</span>
+                                    <span class="dimension-value">2.067 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Capacity</span>
+                                    <span class="dimension-value">26 m³</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Tare Weight</span>
+                                    <span class="dimension-value">2,550 Kgs</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Max Cargo Weight</span>
+                                    <span class="dimension-value">21,450 Kgs</span>
+                                </li>
+                            </ul>
+                            <p class="container-description">
+                                The refrigeration unit is arranged in such a way that the external dimensions of the container meet ISO standards and thus fit into the container ship cell guides, for example. The presence of an integral refrigeration unit entails a loss of internal volume and payload.
+                            </p>
+                            <ul class="features-list">
+                                <li>Temperature controlled environment</li>
+                                <li>Integral refrigeration unit</li>
+                                <li>ISO standard compliant dimensions</li>
+                                <li>Suitable for perishable cargo</li>
+                                <li>Enhanced insulation for temperature maintenance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+            <!-- 40' Refrigerated -->
+                    <div class="container-card">
+                        <div class="container-image">
+                            <img src="images/c13.png" alt="40' Refrigerated Container">
+                        </div>
+                        <div class="container-details">
+                            <h2 class="container-title">40' REFRIGERATED</h2>
+                            <ul class="dimensions-list">
+                                <li>
+                                    <span class="dimension-label">Inside Length</span>
+                                    <span class="dimension-value">11.840 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Inside Width</span>
+                                    <span class="dimension-value">2.286 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Inside Height</span>
+                                    <span class="dimension-value">2.120 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Door Width</span>
+                                    <span class="dimension-value">2.286 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Door Height</span>
+                                    <span class="dimension-value">2.195 m</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Capacity</span>
+                                    <span class="dimension-value">60 m³</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Tare Weight</span>
+                                    <span class="dimension-value">3,850 Kgs</span>
+                                </li>
+                                <li>
+                                    <span class="dimension-label">Max Cargo Weight</span>
+                                    <span class="dimension-value">26,630 Kgs</span>
+                                </li>
+                            </ul>
+                            <p class="container-description">
+                                The refrigeration unit is arranged in such a way that the external dimensions of the container meet ISO standards and thus fit into the container ship cell guides, for example. The presence of an integral refrigeration unit entails a loss of internal volume and payload.
+                            </p>
+                            <ul class="features-list">
+                                <li>Temperature controlled environment</li>
+                                <li>Integral refrigeration unit</li>
+                                <li>ISO standard compliant dimensions</li>
+                                <li>Enhanced insulation for temperature maintenance</li>
+                                <li>Suitable for long-distance transport of perishables</li>
+                            </ul>
+                        </div>
+                    </div>
+    </div>
+
+ 
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>+91 9930098929</p>
+                <p>+91 22-49240139 / 66667911</p>
+                <p>+91 22-23413892 / 23411666</p>
+            </div>
+            <div class="footer-section">
+                <h3>Email Us</h3>
+                <p><a href="mailto:himanshu@maulikforwarders.com">himanshu@maulikforwarders.com</a></p>
+                <p><a href="mailto:maulik@maulikforwarders.com">maulik@maulikforwarders.com</a></p>
+                <p><a href="mailto:rmmehta@maulikforwarders.com">rmmehta@maulikforwarders.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Visit Us</h3>
+                <p>382/384, Narsi Natha Street,</p>
+                <p>Masjid Bunder (W),</p>
+                <p>Mumbai-400 009.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
+
+</footer>
+
+    <script>
+        // Add hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+

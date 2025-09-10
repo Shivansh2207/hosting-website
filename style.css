@@ -1,0 +1,149 @@
+.nav-container {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #7f8c8d;
+    position: relative;
+    padding-left: 40px;
+    margin-top: 5px;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.tagline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #e74c3c;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.company-name:hover + .tagline {
+    padding-left: 50px;
+    opacity: 1;
+}
+
+.company-name:hover + .tagline::before {
+    transform: scaleX(1);
+}
+
+.company-name .pvt-ltd {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.5em;
+    font-weight: 500;
+    color: #7f8c8d;
+    position: relative;
+    top: -10px;
+    margin-left: 5px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.company-name:hover .pvt-ltd {
+    color: #e74c3c;
+    opacity: 1;
+}
+
+.company-name {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.company-name span {
+    display: inline-block;
+    position: relative;
+    padding: 0 5px;
+}
+
+.company-name .cinzel {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.company-name .raleway {
+    margin-left: 5px;
+}
+
+.company-name .pvt-ltd {
+    margin-left: 3px;
+}
+
+.tagline {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #7f8c8d;
+    position: relative;
+    padding-left: 2px;
+    margin-left: 0;
+}
+
+.tagline::before {
+    left: 0;
+    width: 20px;
+}
+
+.company-name:hover + .tagline {
+    padding-left: 30px;
+}
+
+
+/* Add these styles for the hamburger menu */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    margin: 2px 0;
+    transition: 0.4s;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}

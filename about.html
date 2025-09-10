@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Maulik Forwarders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-color: #f57c00;
+            --secondary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 80px;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Add these new styles in the style section */
+        .about-hero {
+            min-height: 60vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 180px 0 100px;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.65));
+            z-index: 2;
+        }
+
+        .world-map {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('images/world-map.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .location-marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 50px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(245, 124, 0, 0.7);
+            }
+            70% {
+                transform: scale(1.5);
+                box-shadow: 0 0 0 10px rgba(245, 124, 0, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(245, 124, 0, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            .hero-description {
+                font-size: 1.2rem;
+            }
+            .stats-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .stat-item {
+                padding: 20px;
+            }
+        }
+         
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .about-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .company-description {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .company-description p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .company-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .milestone {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .milestone:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(245, 124, 0, 0.3);
+        }
+
+        .milestone-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .team-section {
+            background: var(--bg-light);
+            padding: 80px 0;
+        }
+
+        .team-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .team-intro p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            padding: 5px;
+        }
+
+        .team-member h3 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .team-member p {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            .nav-links {
+                display: none;
+            }
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-hero p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .milestone-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Maulik Forwarders Logo">
+                <div class="logo-text">
+                    <span class="company-name">Maulik Forwarders Pvt-Ltd</span>
+                    <span class="tagline">Customs Clearing and Forwarding Agent</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="images/about.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="world-map">
+            <!-- Location markers will be added via JavaScript -->
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Trusted Globally. Driven Locally.</h1>
+            <p class="hero-description">Delivering smart, reliable, and compliant logistics solutions since 1991. At Maulik Forwarders, we don't just move cargo — we move your business forward.</p>
+            
+           
+            
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2 class="section-title">Our Story</h2>
+            <div class="company-description">
+                <p>Maulik Forwarders Pvt. Ltd. is a trusted and experienced name in the field of Clearing, Forwarding, and Shipping, serving clients across India for over 30 years. Established with the vision of providing seamless logistics and compliance solutions, we specialize in handling all types of documentation and customs clearance related to Export-Import (EXIM) business.</p>
+                
+                <p>Over the years, we have successfully managed and streamlined operations across India's major seaports, airports, and inland container depots (ICDs). Our expertise spans key hubs such as Nhava Sheva (JNPT), Mumbai Port Trust (BPT), Mundra, Pipavav, Kandla, Chennai, and Kolkata. We also operate efficiently at critical air cargo terminals like Mumbai Air Cargo and Delhi Air Cargo, along with strategic inland points like Delhi ICD and Ahmedabad. With a deep understanding of port regulations, customs procedures, and local logistics, we ensure smooth, reliable, and timely clearance of consignments across the country’s most important trade gateways.</p>
+
+
+                <p>In addition to forwarding and clearance, Maulik Forwarders also offers professional assistance in obtaining Import/Export Code Numbers (IEC) from the office of the Joint Director General of Foreign Trade (DGFT). We help businesses with registrations under various export promotion councils and coordinate with both government and non-government bodies to secure essential documents like Certificates of Origin and other regulatory approvals.</p>
+                
+                <p>We are committed to offering the most competitive shipping rates, ensuring value for our clients without compromising on speed or service. Our goal is to simplify international trade by delivering end-to-end support with transparency and integrity.</p>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2 class="section-title">Our Milestones</h2>
+            <div class="milestone-grid">
+                <div class="milestone">
+                    <div class="milestone-number">30+</div>
+                    <p>Years of Excellence</p>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-number">1000+</div>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-number">50+</div>
+                    <p>Global Partners</p>
+                </div>
+                <div class="milestone">
+                    <div class="milestone-number">24/7</div>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2 class="section-title">Our Leadership Team</h2>
+            <div class="team-intro">
+                <p>Our company is powered by a dedicated team of qualified, dynamic, and experienced professionals. Each member of our staff brings strong communication skills and deep expertise in customs regulations, enabling fast-track clearance of both import and export consignments. We believe in working closely with authorities and clients alike to ensure smooth and timely operations.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="images/team3.jpg" alt="R.M. Mehta">
+                    <h3>R.M. Mehta</h3>
+                    <p>Senior Advisor</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images/team1.jpg" alt="Himanshu Mehta">
+                    <h3>Himanshu Mehta</h3>
+                    <p>Managing Director</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="images/team2.jpg" alt="Maulik Mehta">
+                    <h3>Maulik Mehta</h3>
+                    <p>Operations Director</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>+91 9892927132</p>
+                       </div>
+            <div class="footer-section">
+                <h3>Email Us</h3>
+                <p><a href="mailto:himanshu@maulikforwarders.com">himanshu@maulikforwarders.com</a></p>
+                <p><a href="mailto:maulik@maulikforwarders.com">maulik@maulikforwarders.com</a></p>
+                <p><a href="mailto:rmmehta@maulikforwarders.com">rmmehta@maulikforwarders.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Visit Us</h3>
+                <p>382/384, Narsi Natha Street,</p>
+                <p>Masjid Bunder (W),</p>
+                <p>Mumbai-400 009.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        </script>
+        <script>
+                // Animated counter function
+                function animateCounter(element) {
+                    const target = parseInt(element.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const step = target / (duration / 16); // 60fps
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            element.textContent = target.toLocaleString();
+                            clearInterval(timer);
+                        } else {
+                            element.textContent = Math.floor(current).toLocaleString();
+                        }
+                    }, 16);
+                }
+
+                // Start counter animation when element is in view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.querySelectorAll('.stat-number').forEach(counter => {
+                                animateCounter(counter);
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                observer.observe(document.querySelector('.stats-container'));
+
+                // Add animated location markers
+                const locations = [
+                    { top: '30%', left: '20%' },
+                    { top: '40%', left: '50%' },
+                    { top: '35%', left: '80%' },
+                    { top: '60%', left: '65%' },
+                    { top: '45%', left: '35%' }
+                ];
+
+                const worldMap = document.querySelector('.world-map');
+                locations.forEach(loc => {
+                    const marker = document.createElement('div');
+                    marker.className = 'location-marker';
+                    marker.style.top = loc.top;
+                    marker.style.left = loc.left;
+                    worldMap.appendChild(marker);
+                });
+            </script>
+</html>

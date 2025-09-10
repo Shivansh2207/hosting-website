@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Maulik Forwarders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #f57c00;
+            --secondary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 80px;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .services-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+                        url('images/main1.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .learn-more {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background: #e65100;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+            .services-hero p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+            .service-card {
+                padding: 30px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Maulik Forwarders Logo">
+                <div class="logo-text">
+                    <span class="company-name">Maulik Forwarders Pvt-Ltd</span>
+                    <span class="tagline"> Customs Clearing and Forwarding Agent</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="services-hero">
+        <h1>What We Offer</h1>
+        <p>Efficient logistics solutions tailored to your needs</p>
+    </section>
+
+    <section class="services-grid">
+        <div class="services-container">
+            <div class="service-card">
+                <i class="fas fa-calculator service-icon"></i>
+                <h3>CBM Calculator</h3>
+                <p>Calculate your cargo's Cubic Meter (CBM) measurements easily and accurately.</p>
+                <a href="https://www.cbmcalculator.com/" target="_blank" class="learn-more">Calculate Now</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-exclamation-triangle service-icon"></i>
+                <h3>Dangerous Goods Classification</h3>
+                <p>Comprehensive guide to dangerous goods classification and handling requirements.</p>
+                <a href="dangerous-goods.html" class="learn-more">View Classifications</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-box service-icon"></i>
+                <h3>Container Dimensions</h3>
+                <p>Detailed specifications and dimensions for all types of shipping containers.</p>
+                <a href="container-dimensions.html" class="learn-more">View Dimensions</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-file-alt service-icon"></i>
+                <h3>Documents Required</h3>
+                <p>Complete checklist of required documentation for import and export procedures.</p>
+                <a href="documents.html" class="learn-more">View Requirements</a>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-handshake service-icon"></i>
+                <h3>Incoterms</h3>
+                <p>Guide to international commercial terms and shipping responsibilities.</p>
+                <a href="incoterms.html" class="learn-more">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>+91 9892927132</p>
+            </div>
+            <div class="footer-section">
+                <h3>Email Us</h3>
+                <p><a href="mailto:himanshu@maulikforwarders.com">himanshu@maulikforwarders.com</a></p>
+                <p><a href="mailto:maulik@maulikforwarders.com">maulik@maulikforwarders.com</a></p>
+                <p><a href="mailto:rmmehta@maulikforwarders.com">rmmehta@maulikforwarders.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Visit Us</h3>
+                <p>382/384, Narsi Natha Street,</p>
+                <p>Masjid Bunder (W),</p>
+                <p>Mumbai-400 009.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="https://www.cbmcalculator.com/" target="_blank">CBM Calculator</a></p>
+                <p><a href="services.html">Our Services</a></p>
+                <p><a href="about.html">About Us</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

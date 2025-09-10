@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dangerous Goods Classification - Maulik Forwarders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Include your existing root variables and basic styles */
+        :root {
+            --primary-color: #f57c00;
+            --secondary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-light: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Include your existing navbar styles */
+
+        .dg-hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                        url('images/dg.jpeg');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .dg-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dg-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .dg-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dg-table th, .dg-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dg-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .dg-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .dg-table td {
+            vertical-align: middle;
+        }
+
+        .dg-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .packaging-groups {
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .packaging-groups h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .group-list {
+            list-style: none;
+        }
+
+        .group-list li {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .group-list li:last-child {
+            border-bottom: none;
+        }
+
+        .group-name {
+            font-weight: 600;
+            min-width: 200px;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .dg-hero h1 {
+                font-size: 2.5rem;
+            }
+            .dg-table {
+                font-size: 14px;
+            }
+            .dg-table th, .dg-table td {
+                padding: 10px;
+            }
+            .group-list li {
+                flex-direction: column;
+                text-align: center;
+            }
+            .group-name {
+                margin-bottom: 10px;
+            }
+        }  .navbar {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 20px 0;
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(10px);
+                    z-index: 1000;
+                    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+                }
+
+                .nav-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0 20px;
+                }
+
+                /* Enhanced table styles */
+                .dg-table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    margin: 30px 0;
+                    background: white;
+                    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+                    border-radius: 15px;
+                    overflow: hidden;
+                }
+
+                .dg-table th {
+                    background: linear-gradient(135deg, var(--primary-color), #ff9800);
+                    color: white;
+                    font-weight: 600;
+                    padding: 20px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+
+                .dg-table td {
+                    padding: 20px;
+                    border-bottom: 1px solid #eee;
+                    transition: all 0.3s ease;
+                }
+
+                .dg-table tr:hover td {
+                    background: #f8f9fa;
+                    transform: scale(1.01);
+                }
+
+                .dg-icon {
+                    width: 70px;
+                    height: 70px;
+                    object-fit: contain;
+                    display: block;
+                    margin: 0 auto;
+                    transition: transform 0.3s ease;
+                }
+
+                .dg-icon:hover {
+                    transform: scale(1.2);
+                }
+
+                /* Footer styles */
+                footer {
+                    background: linear-gradient(135deg, var(--secondary-color), #1a252f);
+                    color: white;
+                    padding: 80px 0 40px;
+                    margin-top: 80px;
+                }
+
+                .footer-content {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 40px;
+                    padding: 0 20px;
+                }
+
+                .footer-section h3 {
+                    color: var(--primary-color);
+                    margin-bottom: 20px;
+                    font-size: 1.4rem;
+                    position: relative;
+                    padding-bottom: 10px;
+                }
+
+                .footer-section h3::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 50px;
+                    height: 3px;
+                    background: var(--primary-color);
+                    border-radius: 2px;
+                }
+
+                .footer-section p {
+                    margin-bottom: 15px;
+                    color: rgba(255,255,255,0.8);
+                    transition: color 0.3s ease;
+                }
+
+                .footer-section a {
+                    color: rgba(255,255,255,0.8);
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    display: inline-block;
+                }
+
+                .footer-section a:hover {
+                    color: var(--primary-color);
+                    transform: translateX(5px);
+                }
+
+                /* Add this for packaging groups enhancement */
+                .packaging-groups {
+                    margin-top: 60px;
+                    background: white;
+                    padding: 40px;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+                }
+
+                .group-list li {
+                    padding: 20px;
+                    border-bottom: 1px solid #eee;
+                    display: flex;
+                    align-items: center;
+                    transition: all 0.3s ease;
+                }
+
+                .group-list li:hover {
+                    background: #f8f9fa;
+                    transform: translateX(10px);
+                }
+                      
+            .logo {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                gap: 15px;
+            }
+
+            .logo img {
+                height: 80px;
+                border-radius: 10px;
+            }
+
+            .logo-text {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .company-name {
+                font-size: 24px;
+                font-weight: 700;
+                color: var(--primary-color);
+            }
+
+            .tagline {
+                font-size: 14px;
+                color: var(--text-light);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 30px;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--text-dark);
+                font-weight: 500;
+                transition: 0.3s;
+                position: relative;
+            }
+
+            .nav-links a:hover {
+                color: var(--primary-color);
+            }
+
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--primary-color);
+                transition: width 0.3s ease;
+            }
+
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+            
+    </style>
+</head>
+<body>
+    <!-- Include your navbar here -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Maulik Forwarders Logo">
+                <div class="logo-text">
+                    <span class="company-name">Maulik Forwarders</span>
+                    <span class="tagline">Global Logistics Solutions</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="dg-hero">
+        <h1>Dangerous Goods Classification</h1>
+        <p>Complete guide to DG classes and handling requirements</p>
+    </section>
+
+    <div class="dg-content">
+        <div class="dg-table-container">
+            <table class="dg-table">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Goods</th>
+                        <th>Example</th>
+                        <th>Sign</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Class 1</td>
+                        <td>Explosives</td>
+                        <td>TNT</td>
+                        <td><img src="images/1.jpg" alt="Explosives Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 2.1</td>
+                        <td>Flammable Gases</td>
+                        <td>Acetylene</td>
+                        <td><img src="images/2.jpg" alt="Flammable Gases Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 2.2</td>
+                        <td>Non-Flammable, Non-Toxic Gases</td>
+                        <td>Nitrogen</td>
+                        <td><img src="images/3.jpg" alt="Non-Flammable Gases Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 2.3</td>
+                        <td>Toxic Gases</td>
+                        <td>Chlorine</td>
+                        <td><img src="images/4.jpg" alt="Toxic Gases Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 3</td>
+                        <td>Flammable Liquids</td>
+                        <td>Petrol</td>
+                        <td><img src="images/5.jpg" alt="Flammable Liquids Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 4.1</td>
+                        <td>Flammable Solids</td>
+                        <td>Sulfur</td>
+                        <td><img src="images/6.jpg" alt="Flammable Solids Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 4.2</td>
+                        <td>Spontaneously Combustible Substances</td>
+                        <td>Zinc Dust</td>
+                        <td><img src="images/7.jpg" alt="Spontaneously Combustible Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 4.3</td>
+                        <td>Dangerous When Wet</td>
+                        <td>Calcium Carbide</td>
+                        <td><img src="images/8.jpg" alt="Dangerous When Wet Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 5.1</td>
+                        <td>Oxidizing Substances</td>
+                        <td>Silver Nitrate</td>
+                        <td><img src="images/9.jpg" alt="Oxidizing Substances Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 5.2</td>
+                        <td>Organic Peroxides</td>
+                        <td>Methyl Ethyl Ketone Peroxide</td>
+                        <td><img src="images/10.jpg" alt="Organic Peroxides Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 6</td>
+                        <td>Toxic Substances</td>
+                        <td>Sodium Cyanide</td>
+                        <td><img src="images/11.jpg" alt="Toxic Substances Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 7</td>
+                        <td>Radioactive Substances</td>
+                        <td>Uranium</td>
+                        <td><img src="images/12.jpg" alt="Radioactive Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 8</td>
+                        <td>Corrosive Substances</td>
+                        <td>Hydrochloric Acid</td>
+                        <td><img src="images/13.jpg" alt="Corrosive Sign" class="dg-icon"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 9</td>
+                        <td>Miscellaneous Dangerous Goods</td>
+                        <td>Asbestos</td>
+                        <td><img src="images/14.jpg" alt="Miscellaneous Sign" class="dg-icon"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="packaging-groups">
+            <h2>Packaging Groups</h2>
+            <ul class="group-list">
+                <li>
+                    <span class="group-name">Packaging Group I</span>
+                    <span class="group-description">Great Danger</span>
+                </li>
+                <li>
+                    <span class="group-name">Packaging Group II</span>
+                    <span class="group-description">Medium Danger</span>
+                </li>
+                <li>
+                    <span class="group-name">Packaging Group III</span>
+                    <span class="group-description">Minor Danger</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Include your footer here -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>+91 9930098929</p>
+                           </div>
+            <div class="footer-section">
+                <h3>Email Us</h3>
+                <p><a href="mailto:himanshu@maulikforwarders.com">himanshu@maulikforwarders.com</a></p>
+                <p><a href="mailto:maulik@maulikforwarders.com">maulik@maulikforwarders.com</a></p>
+                <p><a href="mailto:rmmehta@maulikforwarders.com">rmmehta@maulikforwarders.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Visit Us</h3>
+                <p>382/384, Narsi Natha Street,</p>
+                <p>Masjid Bunder (W),</p>
+                <p>Mumbai-400 009.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

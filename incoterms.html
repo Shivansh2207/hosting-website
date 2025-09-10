@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incoterms - Maulik Forwarders</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #f57c00;
+            --secondary-color: #2c3e50;
+            --bg-light: #f9f9f9;
+            --text-dark: #333;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .logo img {
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 3px;
+        }
+
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                        url('images/shipping-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .incoterms-diagram {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+        }
+
+        .incoterms-diagram img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        .incoterms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .incoterm-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .incoterm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .incoterm-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .incoterm-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .additional-info {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .additional-info h2 {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Maulik Forwarders Logo">
+                Maulik Forwarders
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="documents.html">Documents</a>
+                <a href="incoterms.html" class="active">Incoterms</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>International Commercial Terms</h1>
+            <p>Understanding the crucial transfer points of risk, cost, and responsibility in international trade</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="intro-section">
+            <h2>Understanding Incoterms 2020</h2>
+            <p>Incoterms are international rules established by the International Chamber of Commerce (ICC) that define the responsibilities of sellers and buyers for the delivery of goods under sales contracts for domestic and international trade.</p>
+        </div>
+
+        <div class="incoterms-diagram">
+            <img src="images/intercom.jpg" alt="Risk Transfer Points Diagram">
+        </div>
+
+        <div class="incoterms-grid">
+            <div class="incoterm-card">
+                <h3><i class="fas fa-box"></i> EXW (Ex Works)</h3>
+                <p>Risk transfers to buyer when goods are made available at seller's premises. Minimal obligation for the seller.</p>
+            </div>
+
+            <div class="incoterm-card">
+                <h3><i class="fas fa-truck"></i> FCA (Free Carrier)</h3>
+                <p>Risk transfers when goods are delivered to carrier at named place. Seller handles export clearance.</p>
+            </div>
+
+            <div class="incoterm-card">
+                <h3><i class="fas fa-ship"></i> CPT (Carriage Paid To)</h3>
+                <p>Risk transfers when goods are taken in charge by the carrier. Seller pays for carriage.</p>
+            </div>
+
+            <div class="incoterm-card">
+                <h3><i class="fas fa-shield-alt"></i> CIP (Carriage & Insurance Paid)</h3>
+                <p>Similar to CPT but seller must also arrange and pay for insurance.</p>
+            </div>
+
+            <div class="incoterm-card">
+                <h3><i class="fas fa-warehouse"></i> DAT (Delivered At Terminal)</h3>
+                <p>Risk transfers after unloading at named terminal. Seller handles import clearance.</p>
+            </div>
+
+            <div class="incoterm-card">
+                <h3><i class="fas fa-map-marker-alt"></i> DAP (Delivered At Place)</h3>
+                <p>Risk transfers at destination before unloading. Seller handles transport and export.</p>
+            </div>
+
+            <div class="incoterm-card">
+                <h3><i class="fas fa-file-invoice-dollar"></i> DDP (Delivered Duty Paid)</h3>
+                <p>Maximum obligation for seller. Includes all costs and risks until delivered at destination.</p>
+            </div>
+        </div>
+
+        <div class="additional-info">
+            <h2>Important Considerations</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Documentation Requirements</h3>
+                    <ul>
+                        <li>Commercial Invoice</li>
+                        <li>Packing List</li>
+                        <li>Transport Documents</li>
+                        <li>Insurance Certificates</li>
+                        <li>Export/Import Licenses</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Risk Management Tips</h3>
+                    <ul>
+                        <li>Choose appropriate Incoterms based on transport mode</li>
+                        <li>Consider insurance coverage requirements</li>
+                        <li>Verify customs clearance responsibilities</li>
+                        <li>Document all agreements clearly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Maulik Forwarders - Your trusted partner in international trade and logistics since 1991.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="documents.html">Documents</a>
+                <a href="incoterms.html">Incoterms</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +91 9930098929</p>
+                <p><i class="fas fa-phone"></i> +91  22-49240139 / 66667911</p>
+                <p><i class="fas fa-phone"></i> +91  22-23413892 / 23411666</p>
+                <p><i class="fas fa-envelope"></i> info@maulikforwarders.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Maulik Forwarders. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
